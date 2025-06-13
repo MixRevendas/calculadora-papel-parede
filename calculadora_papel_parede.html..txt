@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Papel de Parede</title>
+</head>
+<body>
+    <h1>Cálculo de Papel de Parede</h1>
+    
+    <!-- Formulário de inserção de dados -->
+    <form id="formulario">
+        <label for="altura">Altura (em metros): </label>
+        <input type="number" id="altura" required><br><br>
+
+        <label for="largura">Largura (em metros): </label>
+        <input type="number" id="largura" required><br><br>
+
+        <label for="refile">Escolha a opção de acabamento:</label><br>
+        <input type="radio" id="semRefile" name="refile" value="semRefile" checked>
+        <label for="semRefile">Sem Refile (R$ 20,00/m²)</label><br>
+        <input type="radio" id="comRefile" name="refile" value="comRefile">
+        <label for="comRefile">Com Refile (R$ 23,00/m²)</label><br><br>
+
+        <button type="button" onclick="calcular()">Calcular</button>
+    </form>
+
+    <h2>Resultado</h2>
+    <p id="resultado"></p>
+
+    <h2>Catálogo de Papéis de Parede</h2>
+    <a href="catalogo.pdf" target="_blank">Clique aqui para ver nosso catálogo</a>
+
+    <script>
+        function calcular() {
+            // Captura os valores inseridos
+            const altura = parseFloat(document.getElementById('altura').value);
+            const largura = parseFloat(document.getElementById('largura').value);
+
+            // Verifica qual preço foi escolhido
+            let precoPorMetroQuadrado;
+            if (document.getElementById('semRefile').checked) {
+                precoPorMetroQuadrado = 20.00; // Preço sem refile
+            } else {
+                precoPorMetroQuadrado = 23.00; // Preço com refile
+            }
+
+            // Calcula a área em metros quadrados
+            const area = altura * largura;
+
+            // Calcula o valor total
+            const valorTotal = area * precoPorMetroQuadrado;
+
+            // Exibe o resultado
+            document.getElementById('resultado').innerText = `Área da parede: ${area.toFixed(2)} m²\nValor total: R$ ${valorTotal.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
+
+https://linktr.ee/catalogotudoemartes
